@@ -6,20 +6,51 @@
     <title>Meu Site Pessoal - Primer CSS</title>
     <!-- Inclui o Primer CSS -->
     <link rel="stylesheet" href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css">
+    <!-- Estilo Personalizado -->
+    <style>
+        /* Efeito de hover no avatar */
+        .avatar:hover {
+            transform: scale(1.1);
+            transition: transform 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Estilo para o nome ao lado do avatar */
+        .avatar-name {
+            display: flex;
+            align-items: center;
+        }
+
+        .avatar-name span {
+            margin-left: 10px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #24292f;
+        }
+    </style>
 </head>
 <body class="bg-gray-light">
 
     <!-- Cabeçalho -->
     <header class="border-bottom px-3 py-2 bg-white">
-        <div class="container-lg d-flex flex-items-center">
-            <h1 class="h3 m-0 text-bold"><a href="#" class="text-black no-underline">Meu Site Pessoal</a></h1>
-            <nav class="ml-auto">
-                <ul class="d-flex list-style-none">
-                    <li class="mr-3"><a href="#inicio" class="text-gray-dark no-underline">Início</a></li>
-                    <li class="mr-3"><a href="#sobre" class="text-gray-dark no-underline">Sobre</a></li>
-                    <li><a href="#contato" class="text-gray-dark no-underline">Contato</a></li>
-                </ul>
-            </nav>
+        <div class="container-lg d-flex flex-items-center justify-between">
+            <!-- Título e Navegação -->
+            <div>
+                <h1 class="h3 m-0 text-bold"><a href="#" class="text-black no-underline">Meu Site Pessoal</a></h1>
+                <nav>
+                    <ul class="d-flex list-style-none mt-2">
+                        <li class="mr-3"><a href="#inicio" class="text-gray-dark no-underline">Início</a></li>
+                        <li class="mr-3"><a href="#sobre" class="text-gray-dark no-underline">Sobre</a></li>
+                        <li><a href="#contato" class="text-gray-dark no-underline">Contato</a></li>
+                    </ul>
+                </nav>
+            </div>
+
+            <!-- Avatar e Nome -->
+            <div class="avatar-name">
+                <img src="https://avatars.githubusercontent.com/u/1004306?v=4" alt="Avatar" class="avatar avatar-large circle">
+                <span>Seu Nome</span>
+            </div>
         </div>
     </header>
 
