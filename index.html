@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Site Pessoal - Primer CSS</title>
+    <!-- Inclui o Primer CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css">
+</head>
+<body class="bg-gray-light">
+
+    <!-- Cabeçalho -->
+    <header class="border-bottom px-3 py-2 bg-white">
+        <div class="container-lg d-flex flex-items-center">
+            <h1 class="h3 m-0 text-bold"><a href="#" class="text-black no-underline">Meu Site Pessoal</a></h1>
+            <nav class="ml-auto">
+                <ul class="d-flex list-style-none">
+                    <li class="mr-3"><a href="#inicio" class="text-gray-dark no-underline">Início</a></li>
+                    <li class="mr-3"><a href="#sobre" class="text-gray-dark no-underline">Sobre</a></li>
+                    <li><a href="#contato" class="text-gray-dark no-underline">Contato</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Seção Principal -->
+    <main class="container-lg mt-5">
+        <section id="inicio" class="mb-6">
+            <h2 class="h1 text-center mb-4">Bem-vindo ao Meu Site!</h2>
+            <p class="f4 text-center text-gray-dark">
+                Este é um site pessoal criado com <a href="https://primer.style/" class="text-blue no-underline">Primer CSS</a>. 
+                Aqui você encontrará artigos, tutoriais e reflexões sobre tecnologia e desenvolvimento.
+            </p>
+        </section>
+
+        <section id="artigos" class="mb-6">
+            <h3 class="h2 mb-3">Últimos Artigos</h3>
+            <div class="Box">
+                <article class="Box-row d-flex flex-column flex-md-row">
+                    <div class="col-12 col-md-8">
+                        <h4 class="h4"><a href="#" class="text-blue no-underline">Introdução ao Primer CSS</a></h4>
+                        <p class="text-gray-dark f5">Neste artigo, exploramos como usar o Primer CSS para criar interfaces modernas e responsivas.</p>
+                    </div>
+                    <div class="col-12 col-md-4 mt-3 mt-md-0 text-right">
+                        <span class="text-gray-light">Publicado em 05/10/2023</span>
+                    </div>
+                </article>
+                <article class="Box-row d-flex flex-column flex-md-row">
+                    <div class="col-12 col-md-8">
+                        <h4 class="h4"><a href="#" class="text-blue no-underline">Arquitetura de Software Moderna</a></h4>
+                        <p class="text-gray-dark f5">Uma visão geral sobre microserviços, DDD e outras abordagens modernas de arquitetura.</p>
+                    </div>
+                    <div class="col-12 col-md-4 mt-3 mt-md-0 text-right">
+                        <span class="text-gray-light">Publicado em 01/10/2023</span>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <section id="sobre" class="mb-6">
+            <h3 class="h2 mb-3">Sobre Mim</h3>
+            <div class="Box p-4">
+                <p class="f4 text-gray-dark">
+                    Olá! Meu nome é Fulano de Tal e sou desenvolvedor de software apaixonado por tecnologia. Este é meu espaço para compartilhar conhecimentos e experiências.
+                </p>
+                <p class="f4 text-gray-dark">
+                    Se quiser entrar em contato, envie um e-mail para <a href="mailto:email@example.com" class="text-blue no-underline">email@example.com</a>.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Rodapé -->
+    <footer class="border-top py-4 mt-6 bg-white">
+        <div class="container-lg text-center text-gray-light">
+            <p class="m-0">&copy; 2023 - Meu Site Pessoal. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
