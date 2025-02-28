@@ -9,16 +9,16 @@
     <!-- Estilo Personalizado -->
     <style>
         /* Estilo para o avatar */
-        .avatar-small {
-            width: 32px;
-            height: 32px;
+        .avatar-medium {
+            width: 48px;
+            height: 48px;
         }
 
         /* Estilo para o bloco de contribuições */
         .contributions-block {
             margin-top: 2rem;
             padding: 1.5rem;
-            background-color: #f6f8fa;
+            background-color: #e9ecef;
             border-radius: 6px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
@@ -43,6 +43,21 @@
         .contributions-block a:hover {
             text-decoration: underline;
         }
+
+        /* Ícones para linguagens */
+        .repo-language {
+            display: inline-flex;
+            align-items: center;
+            margin-left: 0.5rem;
+            font-size: 0.875rem;
+            color: #57606a;
+        }
+
+        .repo-language::before {
+            content: "●";
+            margin-right: 0.25rem;
+            font-size: 1rem;
+        }
     </style>
 </head>
 <body class="bg-gray-light">
@@ -52,7 +67,7 @@
         <div class="container-lg d-flex flex-items-center">
             <!-- Avatar e Nome -->
             <div class="d-flex flex-items-center mr-3">
-                <img src="https://avatars.githubusercontent.com/u/1004306?v=4" alt="Avatar" class="avatar-small circle mr-2">
+                <img src="https://avatars.githubusercontent.com/u/1004306?v=4" alt="Avatar" class="avatar-medium circle mr-2">
                 <span class="text-bold">Marcio Paiva</span>
             </div>
 
@@ -75,17 +90,6 @@
                 Este é um site pessoal criado com <a href="https://primer.style/" class="text-blue no-underline">Primer CSS</a>. 
                 Aqui você encontrará artigos, tutoriais e reflexões sobre tecnologia e desenvolvimento.
             </p>
-        </section>
-
-        <!-- Bloco de Contribuições -->
-        <section id="contribuicoes" class="mb-6 contributions-block">
-            <h3 class="h3">Minhas Contribuições no GitHub</h3>
-            <p>Confira meus repositórios e atividades no GitHub:</p>
-            <p><strong>Perfil:</strong> <a href="https://github.com/marciopaiva" target="_blank">github.com/marciopaiva</a></p>
-            <p><strong>Últimos Repositórios:</strong></p>
-            <ul id="repo-list" class="pl-0">
-                <li>Carregando...</li>
-            </ul>
         </section>
 
         <section id="artigos" class="mb-6">
@@ -123,6 +127,18 @@
                 </p>
             </div>
         </section>
+
+        <!-- Bloco de Contribuições GitHub -->
+        <section id="contribuicoes" class="mb-6 contributions-block">
+            <h3 class="h3">Contribuições GitHub</h3>
+            <p>Confira meus repositórios e atividades no GitHub:</p>
+            <p><strong>Perfil:</strong> <a href="https://github.com/marciopaiva" target="_blank">github.com/marciopaiva</a></p>
+            <p><a href="https://github.com/marciopaiva?tab=overview" target="_blank">Ver todas as contribuições</a></p>
+            <p><strong>Últimos Repositórios:</strong></p>
+            <ul id="repo-list" class="pl-0">
+                <li>Carregando...</li>
+            </ul>
+        </section>
     </main>
 
     <!-- Rodapé -->
@@ -149,17 +165,24 @@
                 const repoList = document.getElementById("repo-list");
                 repoList.innerHTML = ""; // Limpa o conteúdo inicial
 
+                if (repos.length === 0) {
+                    repoList.innerHTML = "<li>Nenhum repositório encontrado.</li>";
+                    return;
+                }
+
                 repos.forEach(repo => {
                     const listItem = document.createElement("li");
                     listItem.innerHTML = `
                         <a href="${repo.html_url}" target="_blank" class="text-blue no-underline">${repo.name}</a>
                         <span class="text-gray-light ml-2">(${new Date(repo.updated_at).toLocaleDateString()})</span>
+                        <p class="mt-1 mb-0">${repo.description || "Sem descrição."}</p>
+                        <span class="repo-language">${repo.language || "Linguagem não especificada"}</span>
                     `;
                     repoList.appendChild(listItem);
                 });
             } catch (error) {
                 console.error(error);
-                document.getElementById("repo-list").innerHTML = "<li>Não foi possível carregar os repositórios.</li>";
+                document.getElementById("repo-list").innerHTML = "<li>Não foi possível carregar os repositórios. Tente novamente mais tarde.</li>";
             }
         }
 
