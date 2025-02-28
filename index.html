@@ -18,7 +18,7 @@
         .contributions-block {
             margin-top: 2rem;
             padding: 1.5rem;
-            background-color: #e9ecef;
+            background-color: #f6f8fa;
             border-radius: 6px;
             box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
@@ -44,19 +44,58 @@
             text-decoration: underline;
         }
 
-        /* Ícones para linguagens */
+        /* Estilo para os repositórios */
+        .repo-item {
+            margin-bottom: 1rem;
+            padding: 0.5rem;
+            border: 1px solid #e1e4e8;
+            border-radius: 6px;
+            background-color: #ffffff;
+        }
+
+        .repo-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .repo-title {
+            font-size: 1rem;
+            font-weight: bold;
+            color: #0366d6;
+        }
+
+        .repo-description {
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            color: #57606a;
+        }
+
+        .repo-meta {
+            margin-top: 0.25rem;
+            font-size: 0.875rem;
+            color: #57606a;
+        }
+
         .repo-language {
             display: inline-flex;
             align-items: center;
-            margin-left: 0.5rem;
-            font-size: 0.875rem;
-            color: #57606a;
+            margin-right: 0.5rem;
         }
 
         .repo-language::before {
             content: "●";
             margin-right: 0.25rem;
             font-size: 1rem;
+        }
+
+        .repo-stars {
+            display: inline-flex;
+            align-items: center;
+            color: #57606a;
+        }
+
+        .repo-stars::before {
+            content: "★";
+            margin-right: 0.25rem;
         }
     </style>
 </head>
@@ -134,10 +173,8 @@
             <p>Confira meus repositórios e atividades no GitHub:</p>
             <p><strong>Perfil:</strong> <a href="https://github.com/marciopaiva" target="_blank">github.com/marciopaiva</a></p>
             <p><a href="https://github.com/marciopaiva?tab=overview" target="_blank">Ver todas as contribuições</a></p>
-            <p><strong>Últimos Repositórios:</strong></p>
-            <ul id="repo-list" class="pl-0">
-                <li>Carregando...</li>
-            </ul>
+            <p><strong>Repositórios Mais Populares:</strong></p>
+            <div id="repo-list"></div>
         </section>
     </main>
 
@@ -153,7 +190,7 @@
         // Função para buscar repositórios do GitHub
         async function fetchGitHubRepos() {
             const username = "marciopaiva"; // Substitua pelo seu nome de usuário do GitHub
-            const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=5`;
+            const apiUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
 
             try {
                 const response = await fetch(apiUrl);
@@ -162,27 +199,41 @@
                 }
                 const repos = await response.json();
 
+                // Filtra repositórios públicos e ordena por número de estrelas
+                const sortedRepos = repos
+                    .filter(repo => !repo.fork) // Ignora forks
+                    .sort((a, b) => b.stargazers_count - a.stargazers_count) // Ordena por estrelas
+                    .slice(0, 6); // Pega os 6 mais populares
+
                 const repoList = document.getElementById("repo-list");
                 repoList.innerHTML = ""; // Limpa o conteúdo inicial
 
-                if (repos.length === 0) {
-                    repoList.innerHTML = "<li>Nenhum repositório encontrado.</li>";
+                if (sortedRepos.length === 0) {
+                    repoList.innerHTML = "<p>Nenhum repositório encontrado.</p>";
                     return;
                 }
 
-                repos.forEach(repo => {
-                    const listItem = document.createElement("li");
-                    listItem.innerHTML = `
-                        <a href="${repo.html_url}" target="_blank" class="text-blue no-underline">${repo.name}</a>
-                        <span class="text-gray-light ml-2">(${new Date(repo.updated_at).toLocaleDateString()})</span>
-                        <p class="mt-1 mb-0">${repo.description || "Sem descrição."}</p>
-                        <span class="repo-language">${repo.language || "Linguagem não especificada"}</span>
+                sortedRepos.forEach(repo => {
+                    const repoItem = document.createElement("div");
+                    repoItem.classList.add("repo-item");
+
+                    repoItem.innerHTML = `
+                        <div class="repo-title">
+                            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                        </div>
+                        <div class="repo-description">
+                            ${repo.description || "Sem descrição."}
+                        </div>
+                        <div class="repo-meta">
+                            <span class="repo-language">${repo.language || "Linguagem não especificada"}</span>
+                            <span class="repo-stars">${repo.stargazers_count} ★</span>
+                        </div>
                     `;
-                    repoList.appendChild(listItem);
+                    repoList.appendChild(repoItem);
                 });
             } catch (error) {
                 console.error(error);
-                document.getElementById("repo-list").innerHTML = "<li>Não foi possível carregar os repositórios. Tente novamente mais tarde.</li>";
+                document.getElementById("repo-list").innerHTML = "<p>Não foi possível carregar os repositórios. Tente novamente mais tarde.</p>";
             }
         }
 
