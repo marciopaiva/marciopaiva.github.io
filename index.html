@@ -6,6 +6,8 @@
     <title>Meu Site Pessoal - Primer CSS</title>
     <!-- Inclui o Primer CSS -->
     <link rel="stylesheet" href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Pré-conexão e importação das fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,36 +29,6 @@
         .avatar-medium {
             width: 48px;
             height: 48px;
-        }
-
-        /* Estilo para o bloco de contribuições */
-        .contributions-block {
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background-color: #f6f8fa;
-            border-radius: 6px;
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
-        }
-
-        .contributions-block h3 {
-            margin-bottom: 1rem;
-            font-size: 1.25rem;
-            color: #24292f;
-        }
-
-        .contributions-block p {
-            margin: 0.5rem 0;
-            font-size: 1rem;
-            color: #57606a;
-        }
-
-        .contributions-block a {
-            color: #0366d6;
-            text-decoration: none;
-        }
-
-        .contributions-block a:hover {
-            text-decoration: underline;
         }
 
         /* Estilo para os cards de repositório */
@@ -103,12 +75,6 @@
             margin-right: 0.5rem;
         }
 
-        .repo-language::before {
-            content: "●";
-            margin-right: 0.25rem;
-            font-size: 1rem;
-        }
-
         .repo-stars {
             display: inline-flex;
             align-items: center;
@@ -118,6 +84,30 @@
         .repo-stars::before {
             content: "★";
             margin-right: 0.25rem;
+        }
+
+        /* Filtros */
+        .filters {
+            margin-bottom: 1.5rem;
+        }
+
+        .filters button {
+            margin-right: 0.5rem;
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 6px;
+            background-color: #f6f8fa;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .filters button.active {
+            background-color: #0366d6;
+            color: white;
+        }
+
+        .filters button:hover:not(.active) {
+            background-color: #e1e4e8;
         }
     </style>
 </head>
@@ -180,6 +170,13 @@
         <!-- Bloco de Contribuições GitHub -->
         <section id="contribuicoes" class="mb-6">
             <h3 class="h2 mb-3">Contribuições GitHub</h3>
+            <div class="filters">
+                <button class="active" data-filter="all">Todos</button>
+                <button data-filter="JavaScript">JavaScript</button>
+                <button data-filter="Python">Python</button>
+                <button data-filter="Java">Java</button>
+                <button data-filter="stars">Com Estrelas</button>
+            </div>
             <div class="repo-grid" id="repo-list"></div>
         </section>
     </main>
@@ -208,43 +205,93 @@
                 // Filtra repositórios públicos e ordena por número de estrelas
                 const sortedRepos = repos
                     .filter(repo => !repo.fork) // Ignora forks
-                    .sort((a, b) => b.stargazers_count - a.stargazers_count) // Ordena por estrelas
-                    .slice(0, 6); // Pega os 6 mais populares
+                    .sort((a, b) => b.stargazers_count - a.stargazers_count); // Ordena por estrelas
 
-                const repoList = document.getElementById("repo-list");
-                repoList.innerHTML = ""; // Limpa o conteúdo inicial
-
-                if (sortedRepos.length === 0) {
-                    repoList.innerHTML = "<p>Nenhum repositório encontrado.</p>";
-                    return;
-                }
-
-                sortedRepos.forEach(repo => {
-                    const repoCard = document.createElement("div");
-                    repoCard.classList.add("repo-card");
-
-                    repoCard.innerHTML = `
-                        <div class="repo-title">
-                            <a href="${repo.html_url}" target="_blank">${repo.name}</a>
-                        </div>
-                        <div class="repo-description">
-                            ${repo.description || "Sem descrição."}
-                        </div>
-                        <div class="repo-meta">
-                            <span class="repo-language">${repo.language || "Linguagem não especificada"}</span>
-                            <span class="repo-stars">${repo.stargazers_count} ★</span>
-                        </div>
-                    `;
-                    repoList.appendChild(repoCard);
-                });
+                renderRepos(sortedRepos);
             } catch (error) {
                 console.error(error);
                 document.getElementById("repo-list").innerHTML = "<p>Não foi possível carregar os repositórios. Tente novamente mais tarde.</p>";
             }
         }
 
-        // Chama a função ao carregar a página
-        window.onload = fetchGitHubRepos;
+        // Função para renderizar os repositórios
+        function renderRepos(repos) {
+            const repoList = document.getElementById("repo-list");
+            repoList.innerHTML = ""; // Limpa o conteúdo inicial
+
+            if (repos.length === 0) {
+                repoList.innerHTML = "<p>Nenhum repositório encontrado.</p>";
+                return;
+            }
+
+            repos.forEach(repo => {
+                const repoCard = document.createElement("div");
+                repoCard.classList.add("repo-card");
+
+                // Ícone da linguagem usando FontAwesome
+                let languageIcon = "";
+                switch (repo.language) {
+                    case "JavaScript":
+                        languageIcon = '<i class="fab fa-js-square"></i>';
+                        break;
+                    case "Python":
+                        languageIcon = '<i class="fab fa-python"></i>';
+                        break;
+                    case "Java":
+                        languageIcon = '<i class="fab fa-java"></i>';
+                        break;
+                    default:
+                        languageIcon = '<i class="fas fa-code"></i>'; // Ícone genérico
+                }
+
+                repoCard.innerHTML = `
+                    <div class="repo-title">
+                        <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+                    </div>
+                    <div class="repo-description">
+                        ${repo.description || "Sem descrição."}
+                    </div>
+                    <div class="repo-meta">
+                        <span class="repo-language">${languageIcon} ${repo.language || "Linguagem não especificada"}</span>
+                        <span class="repo-stars">${repo.stargazers_count} ★</span>
+                        <span><i class="fas fa-code-branch"></i> ${repo.forks_count} Forks</span>
+                        <span><i class="fas fa-exclamation-circle"></i> ${repo.open_issues_count || 0} Issues</span>
+                    </div>
+                `;
+                repoList.appendChild(repoCard);
+            });
+        }
+
+        // Função para filtrar repositórios
+        function filterRepos(filter) {
+            const allRepos = Array.from(document.querySelectorAll(".repo-card"));
+            allRepos.forEach(repo => {
+                const language = repo.querySelector(".repo-language").textContent.trim();
+                const stars = parseInt(repo.querySelector(".repo-stars").textContent);
+
+                if (filter === "all" || language.includes(filter) || (filter === "stars" && stars > 0)) {
+                    repo.style.display = "block";
+                } else {
+                    repo.style.display = "none";
+                }
+            });
+        }
+
+        // Event Listener para os botões de filtro
+        document.addEventListener("DOMContentLoaded", () => {
+            fetchGitHubRepos();
+
+            const filters = document.querySelectorAll(".filters button");
+            filters.forEach(button => {
+                button.addEventListener("click", () => {
+                    filters.forEach(btn => btn.classList.remove("active"));
+                    button.classList.add("active");
+
+                    const filter = button.dataset.filter;
+                    filterRepos(filter);
+                });
+            });
+        });
     </script>
 </body>
 </html>
