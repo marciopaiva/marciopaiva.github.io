@@ -1,5 +1,5 @@
 async function fetchGitHubRepos() {
-    const username = "{{ site.github_username }}";
+    const username = "marciopaiva";
     const apiUrl = `https://api.github.com/users/${username}/repos?per_page=100`;
 
     try {
@@ -27,22 +27,38 @@ function renderRepos(repos) {
         const repoCard = document.createElement("div");
         repoCard.classList.add("repo-card");
 
+        // Ícone da linguagem usando FontAwesome
         let languageIcon = "";
         switch (repo.language) {
-            case "JavaScript": languageIcon = '<i class="fab fa-js-square"></i>'; break;
-            case "Python": languageIcon = '<i class="fab fa-python"></i>'; break;
-            case "Java": languageIcon = '<i class="fab fa-java"></i>'; break;
-            default: languageIcon = '<i class="fas fa-code"></i>';
+            case "JavaScript":
+                languageIcon = '<i class="fab fa-js-square"></i>';
+                break;
+            case "Python":
+                languageIcon = '<i class="fab fa-python"></i>';
+                break;
+            case "Java":
+                languageIcon = '<i class="fab fa-java"></i>';
+                break;
+            default:
+                languageIcon = '<i class="fas fa-code"></i>'; // Ícone genérico
         }
 
         repoCard.innerHTML = `
-            <div class="repo-title"><a href="${repo.html_url}" target="_blank">${repo.name}</a></div>
-            <div class="repo-description">${repo.description || "Sem descrição."}</div>
+            <!-- Linha 1: Nome do Repositório -->
+            <div class="repo-title">
+                <a href="${repo.html_url}" target="_blank">${repo.name}</a>
+            </div>
+
+            <!-- Linha 2: Descrição do Repositório -->
+            <div class="repo-description">
+                ${repo.description || "Sem descrição."}
+            </div>
+
+            <!-- Linha 3: Informações Adicionais -->
             <div class="repo-meta">
-                <span class="repo-language">${languageIcon} ${repo.language || "Linguagem não especificada"}</span>
                 <span class="repo-stars">${repo.stargazers_count} ★</span>
-                <span><i class="fas fa-code-branch"></i> ${repo.forks_count} Forks</span>
-                <span><i class="fas fa-exclamation-circle"></i> ${repo.open_issues_count || 0} Issues</span>
+                <span class="repo-forks">${repo.forks_count} ⑂</span>
+                <span class="repo-issues">${repo.open_issues_count || 0} ⚠</span>
             </div>
         `;
         repoList.appendChild(repoCard);

@@ -78,38 +78,69 @@ body.dark-mode .filters button.active {
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
+/* Linha 1: Nome do Repositório */
 .repo-title {
     font-size: 1rem;
     font-weight: bold;
     color: #0366d6;
+    margin-bottom: 0.5rem; /* Espaçamento abaixo do título */
 }
 
+/* Linha 2: Descrição do Repositório */
 .repo-description {
-    margin-top: 0.5rem;
     font-size: 0.875rem;
     color: #57606a;
+    margin-bottom: 0.75rem; /* Espaçamento abaixo da descrição */
+    line-height: 1.4; /* Melhor legibilidade */
 }
 
+/* Linha 3: Informações Adicionais */
 .repo-meta {
-    margin-top: 0.5rem;
     font-size: 0.875rem;
     color: #57606a;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem; /* Espaçamento entre os itens */
 }
 
 .repo-language {
     display: inline-flex;
     align-items: center;
-    margin-right: 0.5rem;
+}
+
+.repo-language::before {
+    content: "●";
+    margin-right: 0.25rem;
+    font-size: 1rem;
 }
 
 .repo-stars {
     display: inline-flex;
     align-items: center;
-    color: #57606a;
 }
 
 .repo-stars::before {
-    content: "★";
+    content: " ";
+    margin-right: 0.25rem;
+}
+
+.repo-forks {
+    display: inline-flex;
+    align-items: center;
+}
+
+.repo-forks::before {
+    content: " ";
+    margin-right: 0.25rem;
+}
+
+.repo-issues {
+    display: inline-flex;
+    align-items: center;
+}
+
+.repo-issues::before {
+    content: " ";
     margin-right: 0.25rem;
 }
 
