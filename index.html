@@ -44,17 +44,24 @@
             text-decoration: underline;
         }
 
-        /* Estilo para os repositórios */
-        .repo-item {
-            margin-bottom: 1rem;
-            padding: 0.5rem;
+        /* Estilo para os cards de repositório */
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .repo-card {
+            padding: 1rem;
             border: 1px solid #e1e4e8;
             border-radius: 6px;
             background-color: #ffffff;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
         }
 
-        .repo-item:last-child {
-            margin-bottom: 0;
+        .repo-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
         .repo-title {
@@ -64,13 +71,13 @@
         }
 
         .repo-description {
-            margin-top: 0.25rem;
+            margin-top: 0.5rem;
             font-size: 0.875rem;
             color: #57606a;
         }
 
         .repo-meta {
-            margin-top: 0.25rem;
+            margin-top: 0.5rem;
             font-size: 0.875rem;
             color: #57606a;
         }
@@ -174,7 +181,7 @@
             <p><strong>Perfil:</strong> <a href="https://github.com/marciopaiva" target="_blank">github.com/marciopaiva</a></p>
             <p><a href="https://github.com/marciopaiva?tab=overview" target="_blank">Ver todas as contribuições</a></p>
             <p><strong>Repositórios Mais Populares:</strong></p>
-            <div id="repo-list"></div>
+            <div class="repo-grid" id="repo-list"></div>
         </section>
     </main>
 
@@ -214,10 +221,10 @@
                 }
 
                 sortedRepos.forEach(repo => {
-                    const repoItem = document.createElement("div");
-                    repoItem.classList.add("repo-item");
+                    const repoCard = document.createElement("div");
+                    repoCard.classList.add("repo-card");
 
-                    repoItem.innerHTML = `
+                    repoCard.innerHTML = `
                         <div class="repo-title">
                             <a href="${repo.html_url}" target="_blank">${repo.name}</a>
                         </div>
@@ -229,7 +236,7 @@
                             <span class="repo-stars">${repo.stargazers_count} ★</span>
                         </div>
                     `;
-                    repoList.appendChild(repoItem);
+                    repoList.appendChild(repoCard);
                 });
             } catch (error) {
                 console.error(error);
