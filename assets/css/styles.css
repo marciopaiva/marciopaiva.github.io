@@ -1,0 +1,163 @@
+/* Aplicação das fontes personalizadas */
+body {
+    font-family: 'Quicksand', sans-serif; /* Fonte principal */
+    line-height: 1.6;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Nova Square', cursive; /* Fonte para títulos */
+    font-weight: bold;
+}
+
+/* Estilo para o avatar */
+.avatar-medium {
+    width: 48px;
+    height: 48px;
+}
+
+/* Modo Claro (Padrão) */
+body.light-mode {
+    background-color: #f6f8fa; /* Fundo claro */
+    color: #24292f; /* Texto escuro */
+}
+
+body.light-mode .repo-card {
+    background-color: #ffffff; /* Fundo dos cards */
+    border-color: #e1e4e8; /* Borda dos cards */
+}
+
+body.light-mode .filters button {
+    background-color: #f6f8fa; /* Fundo dos botões de filtro */
+    color: #24292f; /* Texto dos botões */
+}
+
+body.light-mode .filters button.active {
+    background-color: #0366d6; /* Botão ativo */
+    color: white;
+}
+
+/* Modo Escuro */
+body.dark-mode {
+    background-color: #1C1C1C; /* Fundo escuro ajustado */
+    color: #ffffff; /* Texto branco */
+}
+
+body.dark-mode .repo-card {
+    background-color: #2D2D2D; /* Fundo dos cards no modo escuro */
+    border-color: #444; /* Borda dos cards no modo escuro */
+}
+
+body.dark-mode .filters button {
+    background-color: #2D2D2D; /* Fundo dos botões de filtro no modo escuro */
+    color: #ffffff; /* Texto dos botões no modo escuro */
+}
+
+body.dark-mode .filters button.active {
+    background-color: #0366d6; /* Botão ativo no modo escuro */
+    color: white;
+}
+
+/* Cards de Repositório */
+.repo-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.repo-card {
+    padding: 1rem;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    background-color: #ffffff;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.repo-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.repo-title {
+    font-size: 1rem;
+    font-weight: bold;
+    color: #0366d6;
+}
+
+.repo-description {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #57606a;
+}
+
+.repo-meta {
+    margin-top: 0.5rem;
+    font-size: 0.875rem;
+    color: #57606a;
+}
+
+.repo-language {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 0.5rem;
+}
+
+.repo-stars {
+    display: inline-flex;
+    align-items: center;
+    color: #57606a;
+}
+
+.repo-stars::before {
+    content: "★";
+    margin-right: 0.25rem;
+}
+
+/* Filtros */
+.filters {
+    margin-bottom: 1.5rem;
+}
+
+.filters button {
+    margin-right: 0.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 6px;
+    background-color: #f6f8fa;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.filters button.active {
+    background-color: #0366d6;
+    color: white;
+}
+
+.filters button:hover:not(.active) {
+    background-color: #e1e4e8;
+}
+
+/* Botão de Alternância de Tema */
+.theme-toggle {
+    margin-left: auto;
+    padding: 0.5rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: color 0.2s ease;
+}
+
+.theme-toggle:hover {
+    color: #0366d6;
+}
+
+/* Ícone do Sol (Modo Claro) */
+body.light-mode .theme-toggle #theme-icon {
+    color: #000000; /* Ícone do sol preto no modo claro */
+}
+
+/* Ícone da Lua (Modo Escuro) */
+body.dark-mode .theme-toggle #theme-icon {
+    color: #ffffff; /* Ícone da lua branca no modo escuro */
+}

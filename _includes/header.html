@@ -1,0 +1,23 @@
+<header class="border-bottom px-3 py-2 bg-white">
+    <div class="container-lg d-flex flex-items-center">
+        <!-- Avatar e Nome -->
+        <div class="d-flex flex-items-center mr-3">
+            <img src="https://avatars.githubusercontent.com/u/1004306?v=4" alt="Avatar" class="avatar-medium circle mr-2">
+            <span class="text-bold">{{ site.author }}</span>
+        </div>
+
+        <!-- Navegação -->
+        <nav>
+            <ul class="d-flex list-style-none">
+                <li class="mr-3"><a href="{{ '/' | relative_url }}" class="text-gray-dark no-underline">Início</a></li>
+                <li class="mr-3"><a href="{{ '/sobre' | relative_url }}" class="text-gray-dark no-underline">Sobre</a></li>
+                <li><a href="{{ '/contato' | relative_url }}" class="text-gray-dark no-underline">Contato</a></li>
+            </ul>
+        </nav>
+
+        <!-- Botão de Alternância de Tema -->
+        <button id="theme-toggle" class="theme-toggle">
+            <i id="theme-icon" class="fas fa-sun"></i> <!-- Ícone inicial é o sol -->
+        </button>
+    </div>
+</header>

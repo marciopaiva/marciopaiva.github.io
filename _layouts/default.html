@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+{% include head.html %}
+<body class="light-mode bg-gray-light">
+    {% include header.html %}
+    <main class="container-lg mt-5">
+        {{ content }}
+    </main>
+    {% include footer.html %}
+    <!-- Script para carregar repositórios do GitHub -->
+    <script src="{{ '/assets/js/scripts.js' | relative_url }}"></script>
+</body>
+</html>
