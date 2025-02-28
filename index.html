@@ -8,24 +8,40 @@
     <link rel="stylesheet" href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css">
     <!-- Estilo Personalizado -->
     <style>
-        /* Efeito de hover no avatar */
-        .avatar:hover {
-            transform: scale(1.1);
-            transition: transform 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        /* Estilo para o avatar */
+        .avatar-small {
+            width: 32px;
+            height: 32px;
         }
 
-        /* Estilo para o container do avatar e nome */
-        .avatar-container {
-            text-align: center; /* Centraliza o conteúdo */
+        /* Estilo para o bloco de contribuições */
+        .contributions-block {
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #f6f8fa;
+            border-radius: 6px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
         }
 
-        .avatar-container span {
-            display: block;
-            margin-top: 5px; /* Espaçamento entre o avatar e o nome */
-            font-size: 1rem;
-            font-weight: bold;
+        .contributions-block h3 {
+            margin-bottom: 1rem;
+            font-size: 1.25rem;
             color: #24292f;
+        }
+
+        .contributions-block p {
+            margin: 0.5rem 0;
+            font-size: 1rem;
+            color: #57606a;
+        }
+
+        .contributions-block a {
+            color: #0366d6;
+            text-decoration: none;
+        }
+
+        .contributions-block a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -33,24 +49,21 @@
 
     <!-- Cabeçalho -->
     <header class="border-bottom px-3 py-2 bg-white">
-        <div class="container-lg d-flex flex-items-center justify-between">
-            <!-- Título e Navegação -->
-            <div>
-                <h1 class="h3 m-0 text-bold"><a href="#" class="text-black no-underline">Meu Site Pessoal</a></h1>
-                <nav>
-                    <ul class="d-flex list-style-none mt-2">
-                        <li class="mr-3"><a href="#inicio" class="text-gray-dark no-underline">Início</a></li>
-                        <li class="mr-3"><a href="#sobre" class="text-gray-dark no-underline">Sobre</a></li>
-                        <li><a href="#contato" class="text-gray-dark no-underline">Contato</a></li>
-                    </ul>
-                </nav>
+        <div class="container-lg d-flex flex-items-center">
+            <!-- Avatar e Nome -->
+            <div class="d-flex flex-items-center mr-3">
+                <img src="https://avatars.githubusercontent.com/u/1004306?v=4" alt="Avatar" class="avatar-small circle mr-2">
+                <span class="text-bold">Marcio Paiva</span>
             </div>
 
-            <!-- Avatar e Nome -->
-            <div class="avatar-container">
-                <img src="https://avatars.githubusercontent.com/u/1004306?v=4" alt="Avatar" class="avatar avatar-small circle">
-                <span>Marcio Paiva</span>
-            </div>
+            <!-- Navegação -->
+            <nav>
+                <ul class="d-flex list-style-none">
+                    <li class="mr-3"><a href="#inicio" class="text-gray-dark no-underline">Início</a></li>
+                    <li class="mr-3"><a href="#sobre" class="text-gray-dark no-underline">Sobre</a></li>
+                    <li><a href="#contato" class="text-gray-dark no-underline">Contato</a></li>
+                </ul>
+            </nav>
         </div>
     </header>
 
@@ -62,6 +75,17 @@
                 Este é um site pessoal criado com <a href="https://primer.style/" class="text-blue no-underline">Primer CSS</a>. 
                 Aqui você encontrará artigos, tutoriais e reflexões sobre tecnologia e desenvolvimento.
             </p>
+        </section>
+
+        <!-- Bloco de Contribuições -->
+        <section id="contribuicoes" class="mb-6 contributions-block">
+            <h3 class="h3">Minhas Contribuições no GitHub</h3>
+            <p>Confira meus repositórios e atividades no GitHub:</p>
+            <p><strong>Perfil:</strong> <a href="https://github.com/marciopaiva" target="_blank">github.com/marciopaiva</a></p>
+            <p><strong>Últimos Repositórios:</strong></p>
+            <ul id="repo-list" class="pl-0">
+                <li>Carregando...</li>
+            </ul>
         </section>
 
         <section id="artigos" class="mb-6">
@@ -108,5 +132,39 @@
         </div>
     </footer>
 
+    <!-- Script para carregar repositórios do GitHub -->
+    <script>
+        // Função para buscar repositórios do GitHub
+        async function fetchGitHubRepos() {
+            const username = "marciopaiva"; // Substitua pelo seu nome de usuário do GitHub
+            const apiUrl = `https://api.github.com/users/${username}/repos?sort=updated&per_page=5`;
+
+            try {
+                const response = await fetch(apiUrl);
+                if (!response.ok) {
+                    throw new Error("Erro ao buscar repositórios");
+                }
+                const repos = await response.json();
+
+                const repoList = document.getElementById("repo-list");
+                repoList.innerHTML = ""; // Limpa o conteúdo inicial
+
+                repos.forEach(repo => {
+                    const listItem = document.createElement("li");
+                    listItem.innerHTML = `
+                        <a href="${repo.html_url}" target="_blank" class="text-blue no-underline">${repo.name}</a>
+                        <span class="text-gray-light ml-2">(${new Date(repo.updated_at).toLocaleDateString()})</span>
+                    `;
+                    repoList.appendChild(listItem);
+                });
+            } catch (error) {
+                console.error(error);
+                document.getElementById("repo-list").innerHTML = "<li>Não foi possível carregar os repositórios.</li>";
+            }
+        }
+
+        // Chama a função ao carregar a página
+        window.onload = fetchGitHubRepos;
+    </script>
 </body>
 </html>
