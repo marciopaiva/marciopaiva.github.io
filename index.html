@@ -6,8 +6,23 @@
     <title>Meu Site Pessoal - Primer CSS</title>
     <!-- Inclui o Primer CSS -->
     <link rel="stylesheet" href="https://unpkg.com/@primer/css@^20.2.4/dist/primer.css">
+    <!-- Pré-conexão e importação das fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nova+Square&family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
     <!-- Estilo Personalizado -->
     <style>
+        /* Aplicação das fontes personalizadas */
+        body {
+            font-family: 'Quicksand', sans-serif; /* Fonte principal */
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Nova Square', cursive; /* Fonte para títulos */
+            font-weight: bold;
+        }
+
         /* Estilo para o avatar */
         .avatar-medium {
             width: 48px;
