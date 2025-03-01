@@ -1,0 +1,29 @@
+# Configurações Globais
+title: Marcio Paiva Barbosa
+description: "Arquiteto de Soluções | Tecnologia e Inovação"
+url: "https://marciopaiva.github.io" # URL do site
+baseurl: "" # Prefixo para URLs (vazio se não houver subdiretório)
+
+# Tema e Estilo
+theme: null # Opcional: Use um tema padrão do Jekyll
+sass:
+  style: compressed
+
+# Configurações de Autor
+author:
+  name: Marcio Paiva Barbosa
+  email: mpaivabarbosa@gmail.com
+  github: https://github.com/marciopaiva/
+  linkedin: https://www.linkedin.com/in/marcio-paiva-barbosa-20666126/
+
+# Plugins
+plugins:
+  - jekyll-feed # Gera um feed RSS
+  - jekyll-seo-tag # Melhora o SEO
+
+# Opções de Build
+exclude:
+  - README.md
+  - node_modules
+  - package.json
+  - _posts/html

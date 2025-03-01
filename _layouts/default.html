@@ -1,13 +1,36 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-{% include head.html %}
-<body class="light-mode bg-gray-light">
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page.title | default: site.title }}</title>
+    <!-- Materialize CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.2.0/dist/css/materialize.min.css">
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DynaPuff&family=Nova+Square&family=Syne+Mono&display=swap" rel="stylesheet">
+    <!-- Estilo Personalizado -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    <!-- Prism.js -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css" rel="stylesheet">
+</head>
+<body>
     {% include header.html %}
-    <main class="container-lg mt-5">
+    <main>
         {{ content }}
     </main>
     {% include footer.html %}
-    <!-- Script para carregar repositórios do GitHub -->
-    <script src="{{ '/assets/js/scripts.js' | relative_url }}"></script>
+    <!-- Materialize JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@materializecss/materialize@2.2.0/dist/js/materialize.min.js"></script>
+    <!-- Prism.js -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-python.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/components/prism-javascript.min.js"></script>
+    <script src="{{ '/assets/js/script.js' | relative_url }}"></script>
 </body>
 </html>

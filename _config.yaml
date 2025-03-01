@@ -1,6 +1,0 @@
-title: Meu Site Pessoal
-description: Um site pessoal criado com Jekyll e Primer CSS.
-author: Marcio Paiva
-github_username: marciopaiva
-baseurl: "/" # Se estiver hospedando em um subdiretório, adicione aqui (ex.: "/meu-site")
-url: ""     # URL base do site (ex.: "https://marciopaiva.github.io")

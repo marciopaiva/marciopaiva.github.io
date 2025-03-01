@@ -1,41 +1,47 @@
 ---
 layout: default
-site.title: Bem-vindo ao Meu Site!
+title: Bem-vindo ao meu site
 ---
 
-<section id="inicio" class="mb-6">
-    <h2 class="h1 text-center mb-4">{{ page.title }}</h2>
-    <p class="f4 text-center text-gray-dark">
-        Este é um site pessoal criado com <a href="https://primer.style/" class="text-blue no-underline">Primer CSS</a>. 
-        Aqui você encontrará artigos, tutoriais e reflexões sobre tecnologia e desenvolvimento.
-    </p>
-</section>
-
-<section id="artigos" class="mb-6">
-    <h3 class="h2 mb-3">Últimos Artigos</h3>
-    <div class="Box">
-        {% for post in site.posts limit:2 %}
-        <article class="Box-row d-flex flex-column flex-md-row">
-            <div class="col-12 col-md-8">
-                <h4 class="h4"><a href="{{ post.url | relative_url }}" class="text-blue no-underline">{{ post.title }}</a></h4>
-                <p class="text-gray-dark f5">{{ post.excerpt }}</p>
+<section class="hero">
+    <div class="container">
+        <div class="row">
+            <div class="col s12 m3 center-align">
+                <img src="{{ '/assets/images/avatar.jpg' | relative_url }}" alt="Avatar" class="circle responsive-img avatar">
+                <h5 class="site-name">Arquiteto de Soluções</h5>
+                <div class="social-links">
+                    <a href="{{ site.author.linkedin }}" target="_blank" class="btn-floating btn-small blue darken-1 tooltipped" aria-label="LinkedIn" data-tooltip="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="{{ site.author.github }}" target="_blank" class="btn-floating btn-small black tooltipped" aria-label="GitHub" data-tooltip="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
             </div>
-            <div class="col-12 col-md-4 mt-3 mt-md-0 text-right">
-                <span class="text-gray-light">Publicado em {{ post.date | date: "%d/%m/%Y" }}</span>
+            <div class="col s12 m9">
+                <div class="presentation-text">
+                    <h4>Bem-vindo ao meu espaço digital!</h4>
+                    <p>
+                        Aqui você encontrará conteúdo sobre tecnologia, arquitetura de soluções e inovação no mundo digital.
+                        Abordo temas como:
+                    </p>
+                    <ul>
+                        <li><strong>Inteligência Artificial:</strong> Aplicações práticas e ferramentas emergentes.</li>
+                        <li><strong>Cloud Computing:</strong> Migração, otimização e segurança na nuvem.</li>
+                        <li><strong>Desenvolvimento Ágil:</strong> Metodologias e colaboração em equipes multidisciplinares.</li>
+                        <li><strong>Segurança Cibernética:</strong> Estratégias para proteger sistemas e dados.</li>
+                        <li><strong>Inovação Digital:</strong> Tendências e transformações no mercado tecnológico.</li>
+                    </ul>
+                    <p>
+                        Meu objetivo é compartilhar conhecimentos práticos e insights que possam ajudar profissionais e entusiastas da área de TI.
+                        Explore os tópicos abaixo e fique à vontade para entrar em contato caso tenha dúvidas ou sugestões!
+                    </p>
+                </div>
             </div>
-        </article>
-        {% endfor %}
+        </div>
     </div>
 </section>
 
-<section id="contribuicoes" class="mb-6">
-    <h3 class="h2 mb-3">Contribuições GitHub</h3>
-    <div class="filters">
-        <button class="active" data-filter="all">Todos</button>
-        <button data-filter="JavaScript">JavaScript</button>
-        <button data-filter="Python">Python</button>
-        <button data-filter="Java">Java</button>
-        <button data-filter="stars">Com Estrelas</button>
-    </div>
-    <div class="repo-grid" id="repo-list"></div>
-</section>
+{% include articles-section.html %}
+
+{% include repositories-section.html %}

@@ -1,5 +1,11 @@
-_site
-.sass-cache
-.jekyll-cache
-.jekyll-metadata
-vendor
+# Ignorar arquivos gerados pelo Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata/
+vendor/
+node_modules/
+
+# Ignorar arquivos específicos do sistema operacional
+.DS_Store
+Thumbs.db
