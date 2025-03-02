@@ -1,11 +1,12 @@
-# Ignorar arquivos gerados pelo Jekyll
+# Local Site Directories
 _site/
 .sass-cache/
 .jekyll-cache/
-.jekyll-metadata/
-vendor/
-node_modules/
+.jekyll-metadata
 
-# Ignorar arquivos específicos do sistema operacional
-.DS_Store
-Thumbs.db
+# Ruby Gems
+.bundle
+Gemfile.lock
+
+# Log Files
+*.log
