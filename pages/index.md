@@ -11,4 +11,4 @@ Meu objetivo é fornecer insights práticos e valiosos para profissionais e entu
 
 Seja você um arquiteto de soluções experiente ou alguém em busca de inspiração para inovar, este é o lugar ideal para explorar novas perspectivas e expandir horizontes. 
 
-"**Illuminating paths to smarter solutions**" – porque cada insight pode ser o ponto de partida para sua próxima grande ideia.
+> "**Illuminating paths to smarter solutions**" – porque cada insight pode ser o ponto de partida para sua próxima grande ideia.
