@@ -1,0 +1,15 @@
+- name: Red Hat Certified Specialist in OpenShift Administration  
+  percentage: 100
+  color: success
+
+- name: Red Hat Certified JBoss Administrator  
+  percentage: 100
+  color: success
+
+- name: Certified Novell Administrator  
+  percentage: 100
+  color: success
+
+- name: Certified Novell Engineer  
+  percentage: 100
+  color: success  

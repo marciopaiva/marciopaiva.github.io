@@ -1,26 +1,30 @@
 ### Site Settings ###
 title               : Insights4YOU
 description         : >-
-                      Arquiteto de Soluções
+                      “Illuminating paths to smarter solutions”
+                      Porque cada insight pode ser o ponto de partida para sua próxima grande ideia
 
 
-baseurl             : ""            # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
-repository          : marciopaiva/marciopaiva.github.io      # Change to <your-username>/<your-username>.github.io (or remove it if you don't need remote projects)
-#remote_theme        : yousinix/portfolYOU
-open_new_tab        : false                    # Opens external URLs in new tab (works for posts, projects and navbar only)
+baseurl             : ""                            # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
+remote_theme        : marciopaiva/insights4you-core # Change to your theme repository if you are using a fork
+theme               : null                          # Change to your theme repository if you are using a fork
+open_new_tab        : false                         # Opens external URLs in new tab (works for posts, projects and navbar only)
 
 
 ### Plugins ###
 plugins:
   - jemoji
 
+### GitHub Repositories ###
+github:
+  user: marciopaiva
+  token: generate-a-token-on-github
 
 ### Navbar Settings ###
-nav_exclude:                                            # The following paths are excluded from navbar
+nav_exclude:                        # The following paths are excluded from navbar
   - pages/tags.html
   - pages/404.html
-  - pages/index.md
-  - documentation/partials/**                           # For Documentation Only
+  - pages/index.md                  # For Documentation Only
 
 
 ### Author Info ###
@@ -35,7 +39,7 @@ author:
 # gitlab            : your_username
 # instagram         : your_username
 # kaggle            : your_username
-  linkedin          : marcio-paiva-barbosa-20666126
+  linkedin          : marcio-paiva-barbosa
 #  medium            : your_username
 # soundcloud        : your_username
 # spotify           : your_username
@@ -99,7 +103,7 @@ defaults:
       path: ""
       type: "posts"
     values:
-      comments: false                                   # Set to true to enable disqus comments
+      comments: true                                   # Set to true to enable disqus comments
 
 
 ### Exclude from processing ###
