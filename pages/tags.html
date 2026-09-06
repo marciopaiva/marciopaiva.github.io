@@ -1,7 +1,39 @@
 ---
-layout: page
+layout: default
 title: Tags
 permalink: /blog/tags
 ---
 
-{% include blog/tags.html %}
+<header class="hero">
+  <div class="container">
+    <h1 class="hero-title">Tags</h1>
+  </div>
+</header>
+
+<main class="page-body">
+  <div class="container-xl">
+    {% assign all_tags = site.tags | sort %}
+    {% if all_tags.size > 0 %}
+      {% for tag in all_tags %}
+        <h2 id="{{ tag[0] | slugify }}">{{ tag[0] }}</h2>
+        <div class="row row-cards mb-4">
+          {% assign tag_posts = tag[1] | sort: 'date' | reverse %}
+          {% for post in tag_posts %}
+            <div class="col-md-6 col-lg-4">
+              <a href="{{ post.url | relative_url }}" class="card h-100 text-decoration-none">
+                <div class="card-body">
+                  <div class="text-muted mb-1">{{ post.date | date: "%b %d, %Y" }}</div>
+                  <h3 class="card-title">{{ post.title | escape }}</h3>
+                </div>
+              </a>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    {% else %}
+      <div class="alert alert-info">
+        <h3>Nenhuma tag ainda</h3>
+      </div>
+    {% endif %}
+  </div>
+</main>
