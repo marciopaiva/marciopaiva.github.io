@@ -1,0 +1,14 @@
+<div class="col-md-6">
+  {% if include.title %}<h3>{{ include.title }}</h3>{% endif %}
+  {% for item in include.source %}
+    <div class="mb-3">
+      <div class="d-flex justify-content-between">
+        <span>{{ item.name }}</span>
+        <span class="text-muted">{{ item.percentage }}%</span>
+      </div>
+      <div class="progress progress-sm">
+        <div class="progress-bar{% if item.color %} bg-{{ item.color }}{% endif %}" style="width: {{ item.percentage }}%" role="progressbar" aria-valuenow="{{ item.percentage }}" aria-valuemin="0" aria-valuemax="100"></div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
