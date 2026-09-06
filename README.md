@@ -1,41 +1,28 @@
 # Insights4YOU
 
-“Iluminando caminhos para soluções mais inteligentes”  
+“Iluminando caminhos para soluções mais inteligentes”
 Porque cada insight pode ser o ponto de partida para sua próxima grande ideia.
 
 ## Sobre
 
-Este é o repositório do site pessoal de Marcio Paiva Barbosa, um arquiteto de soluções. O site é construído utilizando Jekyll e hospedado no GitHub Pages. Ele contém artigos, repositórios populares e informações sobre Marcio.
+Este é o repositório do site pessoal de Marcio Paiva Barbosa, um arquiteto de soluções. O site é construído com Jekyll e hospedado no GitHub Pages, usando o tema remoto [`insights4you-core`](https://github.com/marciopaiva/insights4you-core).
 
 ## Estrutura do Projeto
 
-- `_config.yml`: Arquivo de configuração do Jekyll.
-- `_includes`: Contém arquivos HTML que são incluídos em outras páginas.
-  - `articles-section.html`: Seção de artigos.
-  - `footer.html`: Rodapé do site.
-  - `header.html`: Cabeçalho do site.
-  - `repositories-section.html`: Seção de repositórios.
-  - `theme-switcher.html`: Alternador de tema.
-- `_layouts`: Contém layouts para as páginas.
-  - `default.html`: Layout padrão.
-  - `post.html`: Layout para posts.
-- `_posts`: Contém posts do blog.
-  - `2025-03-01-boas-vindas.md`: Post de boas-vindas.
-- `assets`: Contém arquivos estáticos como CSS, imagens e JavaScript.
-  - `css/style.css`: Arquivo de estilos.
-  - `images/avatar.jpg`: Imagem de avatar.
-  - `images/site-cover.png`: Imagem de capa do site.
-  - `js/script.js`: Arquivo de scripts.
-- `index.html`: Página inicial do site.
-- `Gemfile` e `Gemfile.lock`: Arquivos de configuração para gerenciar dependências Ruby.
-- `node_modules`: Diretório de dependências Node.js, geralmente gerado pelo npm.
+- `_config.yml`: configuração do Jekyll (título, autor, plugins, coleções etc.).
+- `_data`: dados usados pelo tema (certificados, habilidades, redes sociais, timeline).
+- `_posts`: posts do blog.
+- `pages`: páginas do site (início, sobre, projetos, blog, tags, 404).
+- `assets`: favicon e imagens usadas nos posts.
+- `Gemfile`: dependências Ruby do Jekyll.
+
+O layout, os estilos e os includes vêm do tema remoto `insights4you-core`, não deste repositório.
 
 ## Funcionalidades
 
-- **Tema Claro/Escuro**: O site suporta alternância entre tema claro e escuro.
-- **Artigos**: Seção de artigos com posts sobre tecnologia e inovação.
-- **Repositórios Populares**: Seção que exibe os repositórios mais populares do GitHub de Marcio.
-- **Links Sociais**: Links para perfis sociais de Marcio.
+- **Blog**: posts sobre tecnologia, inovação e projetos pessoais.
+- **Projetos**: vitrine com repositórios em destaque no GitHub.
+- **Links Sociais**: links para LinkedIn, GitHub e outros perfis.
 
 ## Como Executar Localmente
 
@@ -81,5 +68,6 @@ Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICEN
 
 ## Contato
 
-- **LinkedIn**: [Marcio Paiva Barbosa](https://www.linkedin.com/in/marciopaiva)
+- **LinkedIn**: [Marcio Paiva Barbosa](https://www.linkedin.com/in/marcio-paiva-barbosa)
 - **GitHub**: [marciopaiva](https://github.com/marciopaiva)
+- **E-mail**: [mpaivabarbosa@gmail.com](mailto:mpaivabarbosa@gmail.com)
