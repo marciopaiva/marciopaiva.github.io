@@ -4,55 +4,45 @@ description         : >-
                       “Iluminando caminhos para soluções mais inteligentes”
                       Porque cada insight pode ser o ponto de partida para sua próxima grande ideia
 
+baseurl             : ""                                          # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
+remote_theme        : marciopaiva/insights4you-jekyll-theme        # GitHub Pages builds via remote_theme, not via the published gem
+repository          : marciopaiva/marciopaiva.github.io            # NWO used by jekyll-github-metadata
+lang                : "pt-BR"
+keywords            : "arquitetura de soluções, devops, cloud, inteligência artificial, rust, tauri"
 
-baseurl             : ""                            # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
-remote_theme        : marciopaiva/insights4you-core # Change to your theme repository if you are using a fork
-theme               : null                          # Change to your theme repository if you are using a fork
-open_new_tab        : false                         # Opens external URLs in new tab (works for posts, projects and navbar only)
+
+### Theme Settings ###
+themeColor          : "#206bc4"
+useIconfont         : false
+layout-dark         : false
 
 
 ### Plugins ###
 plugins:
+  - jekyll-remote-theme
   - jemoji
   - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-feed
+  - jekyll-github-metadata
 
-### GitHub Repositories ###
-github:
-  user: marciopaiva
-  token: generate-a-token-on-github
 
 ### Navbar Settings ###
 nav_exclude:                        # The following paths are excluded from navbar
   - pages/tags.html
   - pages/404.html
-  - pages/index.md                  # For Documentation Only
+  - pages/index.md
 
 
 ### Author Info ###
 author:
   name              : Marcio Paiva Barbosa
+  bio               : Arquiteto de Soluções
   image             : https://avatars.githubusercontent.com/u/1004306?v=4
-# behance           : your_username
-# dribbble          : your_username
   email             : mpaivabarbosa@gmail.com
-#  facebook          : your_username
   github            : marciopaiva
-# gitlab            : your_username
-# instagram         : your_username
-# kaggle            : your_username
+  github-sponsor    : marciopaiva
   linkedin          : marcio-paiva-barbosa
-#  medium            : your_username
-# soundcloud        : your_username
-# spotify           : your_username
-# stackoverflow     : your_user_id
-# tumblr            : your_username.tumblr.com
-# twitch            : your_username
-#  twitter           : your_username
-# vimeo             : your_username
-# youtube           : your_channel_name
-# keybase           : your_username
 
 
 ### Posts ###
@@ -64,49 +54,35 @@ collections:
   projects:
     output: true
     permalink: /projects/:name
-  elements:                                             # For Documentation Only
-    output: true                                        # For Documentation Only
 
 
-### Disqus ###
-disqus:
-  shortname: insights4you                               # Your website Shortname on disqus
-
-
-### Analytics ###
-analytics:
-  enabled: false                                        # Set true to enable analytics
-  google:
-    tracking_id: your-google-tracking-id
-
-
-### Buy me a coffee ###
-# See https://www.buymeacoffee.com/
-buymeacoffee:
+### Comments (Giscus - https://giscus.app) ###
+# 1. Habilite "Discussions" neste repositório no GitHub.
+# 2. Instale o app do giscus: https://github.com/apps/giscus
+# 3. Pegue repo_id/category_id em https://giscus.app e preencha abaixo.
+giscus:
   enabled: false
-  username: your_username
-  color: "#007bff"
-  message: "Thank you for visiting."                    # Message to be displayed aside from the button for a few seconds.
-  description: "Support me on Buy me a coffee!"
+  repo: "marciopaiva/marciopaiva.github.io"
+  repo_id: ""
+  category: "Comments"
+  category_id: ""
+  mapping: "pathname"
 
 
 ### Defaults for collections ###
 defaults:
   - scope:
       path: ""
-      type: "projects"
-    values:
-      layout: "page"
-  - scope:                                              # For Documentation Only
-      path: ""                                          # For Documentation Only
-      type: "elements"                                  # For Documentation Only
-    values:                                             # For Documentation Only
-      layout: "element"                                 # For Documentation Only
-  - scope:
-      path: ""
       type: "posts"
     values:
-      comments: true                                   # Set to true to enable disqus comments
+      layout: "post"
+      layout-wrapper-full: true
+      comments: true
+  - scope:
+      path: ""
+      type: "projects"
+    values:
+      layout: "default"
 
 
 ### Exclude from processing ###
@@ -115,3 +91,5 @@ exclude:
   - CONTRIBUTING.md
   - LICENSE
   - "*.log"
+  - vendor/
+  - .bundle/
