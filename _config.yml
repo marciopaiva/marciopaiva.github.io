@@ -57,15 +57,12 @@ collections:
 
 
 ### Comments (Giscus - https://giscus.app) ###
-# Falta só um passo manual: instalar o app em
-# https://github.com/apps/giscus para este repositório (é um fluxo de
-# autorização no navegador, não dá pra automatizar). Sem isso o widget
-# carrega mas não consegue publicar comentários.
 giscus:
   enabled: true
   repo: "marciopaiva/marciopaiva.github.io"
   repo_id: "R_kgDOOBA-PA"
   category: "Announcements"
+  lang: "pt"   # giscus.app only supports "pt", not "pt-BR" (site.lang above)
   category_id: "DIC_kwDOOBA-PM4DFBjN"
   mapping: "pathname"
 
