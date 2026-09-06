@@ -1,7 +1,7 @@
 ### Site Settings ###
 title               : Insights4YOU
 description         : >-
-                      “Illuminating paths to smarter solutions”
+                      “Iluminando caminhos para soluções mais inteligentes”
                       Porque cada insight pode ser o ponto de partida para sua próxima grande ideia
 
 
@@ -14,6 +14,9 @@ open_new_tab        : false                         # Opens external URLs in new
 ### Plugins ###
 plugins:
   - jemoji
+  - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-feed
 
 ### GitHub Repositories ###
 github:
