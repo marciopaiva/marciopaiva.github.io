@@ -5,23 +5,25 @@ Porque cada insight pode ser o ponto de partida para sua próxima grande ideia.
 
 ## Sobre
 
-Este é o repositório do site pessoal de Marcio Paiva Barbosa, um arquiteto de soluções. O site é construído com Jekyll e hospedado no GitHub Pages, usando o tema remoto [`insights4you-core`](https://github.com/marciopaiva/insights4you-core).
+Este é o repositório do site pessoal de Marcio Paiva Barbosa, um arquiteto de soluções. O site é construído com Jekyll e hospedado no GitHub Pages, usando o tema remoto [`insights4you-jekyll-theme`](https://github.com/marciopaiva/insights4you-jekyll-theme).
 
 ## Estrutura do Projeto
 
 - `_config.yml`: configuração do Jekyll (título, autor, plugins, coleções etc.).
-- `_data`: dados usados pelo tema (certificados, habilidades, redes sociais, timeline).
+- `_data`: certificações e habilidades exibidas na página Sobre.
+- `_includes/about/skills.html`: include local (não faz parte do tema) usado para renderizar as listas de habilidades/certificações como barras de progresso.
 - `_posts`: posts do blog.
+- `_projects`: projetos em destaque na página de Projetos (nome, ferramentas, descrição, link).
 - `pages`: páginas do site (início, sobre, projetos, blog, tags, 404).
 - `assets`: favicon e imagens usadas nos posts.
 - `Gemfile`: dependências Ruby do Jekyll.
 
-O layout, os estilos e os includes vêm do tema remoto `insights4you-core`, não deste repositório.
+O layout, os estilos e os demais includes vêm do tema remoto `insights4you-jekyll-theme`, não deste repositório.
 
 ## Funcionalidades
 
-- **Blog**: posts sobre tecnologia, inovação e projetos pessoais.
-- **Projetos**: vitrine com repositórios em destaque no GitHub.
+- **Blog**: posts sobre tecnologia, inovação e projetos pessoais, com comentários via [Giscus](https://giscus.app) (GitHub Discussions).
+- **Projetos**: projetos locais em destaque + repositórios com estrela no GitHub, buscados automaticamente via `jekyll-github-metadata`.
 - **Links Sociais**: links para LinkedIn, GitHub e outros perfis.
 
 ## Como Executar Localmente
