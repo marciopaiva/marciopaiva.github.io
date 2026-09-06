@@ -1,0 +1,32 @@
+{
+  "400": {
+    "title": 400,
+    "description": "Desculpe, mas sua requisição contém erro de sintaxe e não pôde ser processada"
+  },
+  "401": {
+    "title": 401,
+    "description": "Desculpe, mas você não está autorizado a acessar esta página"
+  },
+  "403": {
+    "title": 403,
+    "description": "Desculpe, mas você não tem permissão para acessar esta página"
+  },
+  "404": {
+    "illustration": "not-found.svg",
+    "title": 404,
+    "description": "Desculpe, mas a página que você procura não foi encontrada"
+  },
+  "500": {
+    "title": 500,
+    "description": "Desculpe, mas nosso servidor encontrou um erro interno"
+  },
+  "503": {
+    "title": 503,
+    "description": "Desculpe, mas nosso serviço está indisponível no momento"
+  },
+  "maintenance": {
+    "illustration": "computer-fix.svg",
+    "header": "Em manutenção temporária",
+    "description": "Desculpe o transtorno, estamos realizando uma manutenção no momento. Voltaremos em breve!"
+  }
+}

@@ -1,0 +1,28 @@
+# Sobrescreve os textos de UI em inglês do tema (marciopaiva/insights4you-jekyll-theme)
+# com a tradução em português. Ver _data/i4y-strings.yml no repositório do tema.
+
+projects:
+  title: "Projetos"
+  description: "Aqui você encontra uma coleção dos meus projetos, experimentos e aprendizados."
+  unable_to_load_title: "Não foi possível carregar os repositórios"
+  unable_to_load_description: "Houve um problema ao buscar os dados dos repositórios. Tente novamente mais tarde."
+  no_starred_title: "Nenhum repositório com estrela encontrado"
+  no_starred_description: "Repositórios com pelo menos uma estrela aparecerão aqui."
+  uncategorized: "Sem categoria"
+  stars: "Estrelas"
+  watchers: "Observadores"
+  forks: "Forks"
+  issues: "Issues"
+  no_description: "Sem descrição disponível"
+  view_repository: "Ver repositório"
+  local_projects: "Projetos locais"
+  view_project: "Ver projeto"
+
+empty:
+  title: "Nenhum resultado encontrado"
+  subtitle: "Tente ajustar sua busca ou filtro para encontrar o que procura."
+  button_text: "Buscar novamente"
+
+error:
+  default_header: "Ops… Você encontrou uma página de erro"
+  home_button: "Voltar para o início"
